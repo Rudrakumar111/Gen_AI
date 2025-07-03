@@ -2,3 +2,16 @@ langchain
 python-dotenv
 langchain-community
 pypdf
+bs4
+arxiv
+PyMuPDF 
+wikipedia
+langchain_openai
+chromadb
+sentence_transformers
+langchain_huggingface
+tf-keras
+faiss-cpu
+langchain_chroma
+beautifulsoup4
+langchain_google_genai
