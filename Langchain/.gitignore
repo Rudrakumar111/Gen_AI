@@ -1,0 +1,4 @@
+.env
+faiss_index
+chroma_store_llama3_2
+faiss_DB_LLama-2

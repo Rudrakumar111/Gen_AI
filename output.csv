@@ -1,0 +1,16 @@
+Car,Brand,Model,Year,Engine Size,Fuel Type,Mileage (km),Price (USD),Owner Type
+1,Toyota,Corolla,2018,1.8L,Petrol,42000.0,14500.0,First
+2,Honda,Civic,2020,2.0L,petrol,25000.0,18000.0,First
+3,Ford,Focus,2017,1.5L,Diesel,60000.0,12500.0,Second
+4,Hyundai,Elantra,2019,,Petrol,35000.0,16000.0,first
+5,BMW,3 Series,2016,2.0L,diesel,70000.0,,Third
+6,Mercedes-Benz,C Class,2018,2.0L,Petrol,40000.0,28000.0,First
+7,Tesla,Model 3,2021,Electric,electric,15000.0,35000.0,First
+8,Kia,Optima,2017,2.4L,Petrol,50000.0,13000.0,Second
+9,Audi,A4,2019,2.0L,Diesel,30000.0,27000.0,Second
+10,Chevrolet,Malibu,2016,1.5L,Petrol,-500.0,11000.0,third
+11,Honda,Civic,2020,2.0L,Petrol,25000.0,18000.0,First
+12,Ford,Focus,2017,1.5L,Diesel,60000.0,12500.0,Second
+13,,Accord,2018,2.4L,Petrol,45000.0,19000.0,First
+14,Toyota,Camry,2015,2.5L,Petrol,,14000.0,Second
+15,BMW,3 series,2016,2.0L,Diesel,70000.0,20000.0,third
