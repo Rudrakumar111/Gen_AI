@@ -1,40 +1,34 @@
-from fastapi import FastAPI
-from langchain_core.prompts import ChatPromptTemplate
+import os
+from fastapi import FastAPI, Request
+from pydantic import BaseModel
+from dotenv import load_dotenv
+ 
+from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
-from langserve import add_routes
-import os
-from dotenv import load_dotenv
+ 
+# Load environment variables
 load_dotenv()
-
 groq_api_key = os.getenv("GROQ_API_KEY")
-model=ChatGroq(model="Gemma2-9b-It",groq_api_key=groq_api_key)
-
-
-## 1. Create prompt template
-system_template = "Translate the following into {language}:"
-prompt_template = ChatPromptTemplate.from_messages([
-    ('system',system_template),
-    ('user','{text}')
-])
-
+ 
+# Initialize LangChain model with Groq
+model = ChatGroq(model="Gemma2-9b-It", groq_api_key=groq_api_key)
 parser = StrOutputParser()
-
-## create chain
-chain = prompt_template|model|parser
-
-
-## App Definition
-app = FastAPI(title="Langchain Server",
-                version="1.0",
-                description="A Simple api server using Langchain runnable interfaces")
-
-add_routes(
-    app,
-    chain,
-    path='/chain'
-)
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app,host='127.0.0.1',port=8000)
+chain = model | parser
+ 
+# Initialize FastAPI app
+app = FastAPI()
+ 
+# Define request model
+class TranslationRequest(BaseModel):
+    text: str
+ 
+# Endpoint for translation
+@app.post("/translate")
+async def translate(req: TranslationRequest):
+    messages = [
+        SystemMessage(content="Translate the following from English to gujarati"),
+        HumanMessage(content=req.text)
+    ]
+    result = chain.invoke(messages)
+    return {"translation": result}
